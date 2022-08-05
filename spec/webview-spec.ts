@@ -53,7 +53,6 @@ async function loadWebViewAndWaitForMessage (w: WebContents, attributes: Record<
 };
 
 describe('<webview> tag', function () {
-  useRemoteContext({ webPreferences: { webviewTag: true } });
   const fixtures = path.join(__dirname, 'fixtures');
   const blankPageUrl = url.pathToFileURL(path.join(fixtures, 'pages', 'blank.html')).toString();
 
@@ -1818,6 +1817,7 @@ describe('<webview> tag', function () {
     });
 
     describe('<webview>.goForward()', () => {
+      useRemoteContext({ webPreferences: { webviewTag: true } });
       itremote('should work after a replaced history entry', async (fixtures: string) => {
         const webview = new WebView();
 
